@@ -2,6 +2,9 @@ import math
 
 class Shape:
     def __init__(self):
+        """
+        initiates the shape class
+        """
         self.area=0
     def calculate_area(self):
         return 0
