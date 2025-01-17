@@ -1,4 +1,5 @@
 import math
+import BL
 
 class Shape:
     def __init__(self):
@@ -45,24 +46,37 @@ class Triangle(Shape):
         """ calculates the area of the triangle"""
         return self.base*self.height/2
 
-square1= Square(4)
-rec1=Rectangle(4,8)
-circle1=Circle(3)
-tri1=Triangle(4,8)
 
-user=input("""what shape would you like to know the area of
-           1)square
-           2)rectangle
-           3)circle
-           4)triangle
-           """)
-if user ==1:
-    square1.calculate_area
-elif user ==2:
-    rec1.calculate_area
-elif user ==3:
-    circle1.calculate_area
-elif user == 4:
-    tri1.calculate_area
-else:
-    print("please input a valid input")
+
+
+active=True
+while active:
+    user=BL.intInputValidator("""what shape would you like to know the area of
+            1)square
+            2)rectangle
+            3)circle
+            4)triangle
+            0)exit
+            """, "please input a valid number from 0-4")
+    if user == 1:
+        len=BL.intInputValidator("what is the length of each side of the square: ", "please input a number")
+        square1= Square(len)
+        print(f"the area of the square is {square1.calculate_area()}")
+    elif user ==2:
+        wid=BL.intInputValidator("what is the width of the rectangle: ", "please input a number")
+        height=BL.intInputValidator("what is the height of the rectangle: ", "please input a number")
+        rec1 = Rectangle(wid, height)
+        print(f"the area of the rectangle is {rec1.calculate_area()}")
+    elif user ==3:
+        rad=BL.intInputValidator("what is the radius of the circle: ", "please input a number")
+        circle1=Circle(rad)
+        print(f"the area of the circle is {circle1.calculate_area()}")
+    elif user == 4:
+        bas=BL.intInputValidator("what is the length of the base of the triangle: ", "please input a number")
+        hei=BL.intInputValidator("what is the height of the triangle: ", "please input a number")
+        tri1=Triangle(bas, hei)
+        print(f"the area of the triangle is {tri1.calculate_area()}")
+    elif user == 0:
+        exit()
+    else:
+        print("please input a valid input")
